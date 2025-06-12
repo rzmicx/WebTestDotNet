@@ -1,0 +1,40 @@
+﻿@page
+@model AddModel
+@{
+    ViewData["Title"] = "Add Product";
+}
+
+<div class="d-flex justify-content-center align-items-center vh-100">
+    <div class="card p-4 shadow" style="width: 500px;">
+        <h3 class="text-center mb-4">Add New Product</h3>
+
+        @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+        {
+            <div class="alert alert-danger">@Model.ErrorMessage</div>
+        }
+
+        @if (!string.IsNullOrEmpty(Model.SuccessMessage))
+        {
+            <div class="alert alert-success">@Model.SuccessMessage</div>
+        }
+
+        <form method="post">
+            <div class="form-group mb-3">
+                <label asp-for="Name">Product Name</label>
+                <input asp-for="Name" class="form-control" />
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Description">Description</label>
+                <textarea asp-for="Description" class="form-control"></textarea>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Price">Price</label>
+                <input asp-for="Price" class="form-control" type="number" step="0.01" />
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">Add Product</button>
+        </form>
+    </div>
+</div>

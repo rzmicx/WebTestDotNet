@@ -3,17 +3,13 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace WebTestDotNet.Pages
 {
-    public class IndexModel : PageModel
+    public class LogoutModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
-
-        public IndexModel(ILogger<IndexModel> logger)
-        {
-            _logger = logger;
-        }
-
         public void OnGet()
         {
+            HttpContext.Session.Remove("JwtToken");
+
+
             Response.Redirect("Login");
         }
     }
